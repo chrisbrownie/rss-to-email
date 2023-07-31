@@ -3,9 +3,8 @@ name: Send email
 on:
   schedule:
     - cron: '30 17 * * *' # 1730 UTC, 0330 UTC+10
+  push: # If uncommented run on every push to every branch for easier debugging
 
-# If uncommented run on every push to every branch for easier debugging
-on: push
 
 jobs:
   build:
