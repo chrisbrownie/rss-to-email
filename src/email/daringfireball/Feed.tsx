@@ -1,4 +1,6 @@
 import { Container } from '@react-email/container'
+import { Hr } from '@react-email/hr'
+import { Section } from '@react-email/section'
 import { Img } from '@react-email/img'
 import { Link } from '@react-email/link'
 import { Text } from '@react-email/text'
@@ -35,6 +37,7 @@ export default ({ feed }: Props) => {
 }
 
 const box = {
+  marginTop: '4px',
   padding: '32px 32px 32px 17px',
   backgroundColor: '#4a525a',
 }
@@ -62,4 +65,9 @@ const titleLink = {
   fontWeight: 400,
   letterSpacing: '1.89px',
   textTransform: 'uppercase' as const,
+}
+
+const hr = {
+  margin: '24px 0 0',
+  borderTopColor: '#dee2e6',
 }
