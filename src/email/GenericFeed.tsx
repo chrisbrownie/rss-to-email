@@ -20,13 +20,13 @@ interface Props {
 
 export default ({ feed, backgroundColor, itemBackgroundColor, foregroundColor, logoUrl }: Props) => {
   return (
-    <Container style={{...box, backgroundColor: backgroundColor}}>
+    <Container style={{...box, backgroundColor: backgroundColor || '#e9ecef'}}>
       <Section>
         <Column>
           {logoUrl && <Img src={logoUrl} style={logo}/> }
         </Column>
         <Column>
-          <Link style={{...header, color: foregroundColor }} href={feed.link}>
+          <Link style={{...header, color: foregroundColor || '#495057' }} href={feed.link}>
             {feed.title}
           </Link>
         </Column>
@@ -35,7 +35,7 @@ export default ({ feed, backgroundColor, itemBackgroundColor, foregroundColor, l
         const href = parseLinks(item.links)
         
         return (
-          <Container style={{...feedBox, backgroundColor: itemBackgroundColor }}>
+          <Container style={{...feedBox, backgroundColor: itemBackgroundColor || '#ffffff' }}>
             <Container key={item.guid} style={section}>
               <Link style={anchor} href={href}>
                 {item.title}
