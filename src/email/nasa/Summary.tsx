@@ -13,20 +13,18 @@ interface Props {
 
 export default ({ content, href, paragraphStyle, blockquoteStyle, readMoreStyle }: Props) => {
   const root = parse(content)
-  const elements = root.querySelectorAll('> p, > blockquote')
+  const contentText = root.innerHTML
 
-  if (elements.length === 0) {
+  if (contentText.length === 0) {
     return null
   }
 
   return (
     <>
-      <Text style={elements[0].localName === 'blockquote' ? blockquoteStyle : paragraphStyle}>{elements[0].text}</Text>
-      {elements.length > 1 && (
+      <Text style={paragraphStyle}>{contentText}</Text>
         <Text style={readMoreStyle}>
           <Link href={href}>[read more]</Link>
         </Text>
-      )}
     </>
   )
 }

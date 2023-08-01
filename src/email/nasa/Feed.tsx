@@ -1,47 +1,40 @@
 import { Container } from '@react-email/container'
-import { Column } from '@react-email/column'
 import { Img } from '@react-email/img'
 import { Link } from '@react-email/link'
 import { Section } from '@react-email/section'
+import { Column } from '@react-email/column'
 import { Text } from '@react-email/text'
 import { Output } from 'rss-parser'
-import { CustomItem } from '../parseFeeds'
-import { formatDate } from '../utils/formatter'
+import { CustomItem } from '../../parseFeeds'
+import { formatDate } from '../../utils/formatter'
 import Summary from './Summary'
-import { parseLinks } from './parseLinks'
+import { parseLinks } from './../parseLinks'
 
 interface Props {
   feed: Output<CustomItem>
-  backgroundColor?: string
-  itemBackgroundColor?: string
-  foregroundColor?: string
-  logoUrl?: string
 }
 
-export default ({ feed, backgroundColor, itemBackgroundColor, foregroundColor, logoUrl }: Props) => {
+export default ({ feed }: Props) => {
   return (
-    <Container style={{...box, backgroundColor: backgroundColor}}>
+    <Container style={box}>
       <Section>
+        <Column><Img src="https://blogs.nasa.gov/wp-content/themes/2016nasablogs/images/nasa-logo.svg" style={logo} /></Column>
         <Column>
-          {logoUrl && <Img src={logoUrl} style={logo}/> }
-        </Column>
-        <Column>
-          <Link style={{...header, color: foregroundColor }} href={feed.link}>
+          <Link style={header} href={feed.link}>
             {feed.title}
           </Link>
         </Column>
       </Section>
       {feed.items.map((item) => {
         const href = parseLinks(item.links)
-        
         return (
-          <Container style={{...feedBox, backgroundColor: itemBackgroundColor }}>
+          <Container style={feedBox}>
             <Container key={item.guid} style={section}>
               <Link style={anchor} href={href}>
                 {item.title}
               </Link>
               {item.pubDate && <Text style={date}>{formatDate(item.pubDate)}</Text>}
-              {item.content && <Summary href={href} paragraphStyle={paragraph} blockquoteStyle={{ ...paragraph, ...blockquote }} readMoreStyle={readMore} content={item.content} />}
+              {item.contentSnippet && <Summary href={href} paragraphStyle={paragraph} blockquoteStyle={{ ...paragraph, ...blockquote }} readMoreStyle={readMore} content={item.contentSnippet} />}
             </Container>
           </Container>
         )
@@ -52,21 +45,25 @@ export default ({ feed, backgroundColor, itemBackgroundColor, foregroundColor, l
 
 const box = {
   marginTop: '4px',
-  padding: '16px 16px 12px 12px',
-  backgroundColor: '#095c6b',
-}
-
-const header = {
-  color: '#ffffff',
-  fontFamily: 'system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif',
-  fontSize: '24px',
-  margin: 0,
+  padding: '12px',
+  backgroundColor: '#000000',
 }
 
 const feedBox = {
   marginTop: '4px',
   padding: '4px 4px 8px 8px',
-  backgroundColor: '#ffffff',
+  backgroundColor: '#eeeeee',
+}
+
+const logo = {
+  width: '64px',
+}
+
+const header = {
+  color: '#ffffff',
+  fontFamily: 'Montserrat, "Helvetica Neue", sans-serif',
+  fontSize: '24px',
+  margin: 0,
 }
 
 const section = {
@@ -100,10 +97,6 @@ const readMore = {
   fontSize: '12px',
   lineHeight: '18px',
   margin: 0,
-}
-
-const logo = {
-  width: '64px',
 }
 
 const blockquote = {
