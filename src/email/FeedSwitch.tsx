@@ -26,7 +26,7 @@ export default ({ feed, hasBottomSeparator }: Props) => {
       backgroundColor="#4db2ec" 
       itemBackgroundColor="#ffffff" 
       foregroundColor="#ffffff" 
-      logoUrl="https://s30121.pcdn.co/wp-content/uploads/2019/03/logo-1.png.webp" />
+      logoUrl="https://avweb.com/wp-content/uploads/2019/03/logo-1.png" />
   } else {
     console.log(`Using default feed template for feed at URL '${feed.feedUrl}' with link '${feed_link}'`)
     // console.dir(feed)
