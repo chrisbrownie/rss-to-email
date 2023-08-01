@@ -19,4 +19,5 @@ export const feeds = [
   // *********************
   'https://www.avweb.com/feed/', // AvWeb https://www.avweb.com/
   'https://australianaviation.com.au/feed/', // Australian Aviation https://australianaviation.com.au/
+  'https://generalaviationnews.com/feed/', // General Aviation News https://generalaviationnews.com/
 ]
