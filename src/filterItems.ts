@@ -3,7 +3,10 @@ import { Item } from 'rss-parser'
 import { CustomItem, SettledFeed } from './parseFeeds'
 
 const filterItems = (items: (Item & CustomItem)[], from: Dayjs, limit?: number) =>
-  items.filter(({ pubDate }) => pubDate && dayjs(pubDate).isAfter(from)).slice(0, limit)
+  items
+  .filter(({ pubDate }) => pubDate && dayjs(pubDate).isAfter(from))
+  .filter(({ title }) => title && /^(?!.*\[Sponsor\]).*$/.test(title)) // Filter Daring Fireball sponsored posts 
+  .slice(0, limit)
 
 export const filterItemsFromFeed = (feeds: SettledFeed[], from: Dayjs, limit?: number) => {
   // Filter feed items that are before the `from` datetime or surpass the provided `limit`
