@@ -6,6 +6,7 @@ const filterItems = (items: (Item & CustomItem)[], from: Dayjs, limit?: number) 
   items
   .filter(({ pubDate }) => pubDate && dayjs(pubDate).isAfter(from))
   .filter(({ title }) => title && /^(?!.*\[Sponsor\]).*$/.test(title)) // Filter Daring Fireball sponsored posts 
+  .filter(({ title }) => title && /^(?!The Talk Show\:).*$/.test(title)) // Filter Daring Fireball 'The Talk Show' posts 
   .slice(0, limit)
 
 export const filterItemsFromFeed = (feeds: SettledFeed[], from: Dayjs, limit?: number) => {
