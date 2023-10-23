@@ -17,6 +17,8 @@ export default ({ feed, hasBottomSeparator }: Props) => {
   console.log(feed_link)
   if (feed_link == 'https://daringfireball.net/') { // Daring Fireball
     return <DaringFireballFeed key={feed_link} feed={feed} />
+  } else if (feed_link == 'https://hackaday.com') {
+    return <HackadayFeed key={feed_link} feed={feed} />
   } else if (/https:\/\/blogs.nasa.gov\//.test(feed_link)) { // NASA Blogs
     return <NasaFeed key={feed_link} feed={feed} />
   } else if (feed_url == 'https://www.avweb.com/feed/') {
