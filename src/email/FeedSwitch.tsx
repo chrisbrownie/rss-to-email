@@ -2,6 +2,7 @@ import { Output } from 'rss-parser'
 import { CustomItem } from '../parseFeeds'
 
 import DaringFireballFeed from './daringfireball/Feed'
+import HackadayFeed from './hackaday/Feed'
 import NasaFeed from './nasa/Feed'
 
 import GenericFeed from './GenericFeed'
@@ -23,16 +24,16 @@ export default ({ feed, hasBottomSeparator }: Props) => {
     return <NasaFeed key={feed_link} feed={feed} />
   } else if (feed_url == 'https://www.avweb.com/feed/') {
     return <GenericFeed
-      key={feed_link} 
-      feed={feed} 
-      backgroundColor="#4db2ec" 
-      itemBackgroundColor="#ffffff" 
-      foregroundColor="#ffffff" 
+      key={feed_link}
+      feed={feed}
+      backgroundColor="#4db2ec"
+      itemBackgroundColor="#ffffff"
+      foregroundColor="#ffffff"
       logoUrl="https://avweb.com/wp-content/uploads/2019/03/logo-1.png" />
-  } else if ( feed_url == 'https://australianaviation.com.au/feed/') {
+  } else if (feed_url == 'https://australianaviation.com.au/feed/') {
     return <GenericFeed
-      key={feed_link} 
-      feed={feed} 
+      key={feed_link}
+      feed={feed}
       logoUrl="https://australianaviation.com.au/wp-content/uploads/AA-standard.svg" />
   } else {
     console.log(`Using default feed template for feed at URL '${feed.feedUrl}' with link '${feed_link}'`)

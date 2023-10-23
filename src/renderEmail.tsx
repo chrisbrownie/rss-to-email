@@ -12,7 +12,7 @@ interface Props {
   pretty: boolean
 }
 
-const LIMIT_ITEMS_INITIAL_RUN = 3
+const LIMIT_ITEMS_INITIAL_RUN = 5
 
 export async function renderEmail({ actionUrl, cache, lastSuccess, pretty = false }: Partial<Props>) {
   const { from, initialRun } = parseLastSuccess(lastSuccess)
